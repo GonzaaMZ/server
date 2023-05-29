@@ -14,5 +14,4 @@ public class MessagesController {
 	public ResponseEntity<List<String>> messages(){
 		return ResponseEntity.ok(Arrays.asList("uno", "dos"));
 	}
-	
 }
