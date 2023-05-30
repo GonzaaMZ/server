@@ -19,7 +19,7 @@ public class SecurityConfig {
 	
 	
 	private  UserAuthenticationEntryPoint userAuthenticationEntryPoint;
-	private  UserAuthProvider userAuthProvider;
+	private  UserAuthenticationProvider userAuthProvider;
 	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) {
