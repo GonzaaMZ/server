@@ -13,8 +13,12 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
+	
+	private  UserAuthProvider userAuthProvider;
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -39,7 +43,5 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 		}
 		filterChain.doFilter(request, response);
 	}
-	
-	
 
 }

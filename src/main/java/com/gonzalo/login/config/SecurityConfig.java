@@ -2,6 +2,7 @@ package com.gonzalo.login.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -15,14 +16,17 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 public class SecurityConfig {
 	
-	private final UserAuthenticationEntryPoint userAuthenticationEntryPoint;
+	
+	
+	private  UserAuthenticationEntryPoint userAuthenticationEntryPoint;
+	private  UserAuthProvider userAuthProvider;
 	
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) {
 		http
 			.exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
 		.and()
-		.addFilterBefore(new JwtAuthFilter(), BasicAuthenticationFilter.class)
+		.addFilterBefore(new JwtAuthFilter(userAuthProvider), BasicAuthenticationFilter.class)
 		.csrf().disable()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and()
