@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Component
-public class UserAuthProvider {
+public class UserAuthenticationProvider {
 
 	@Value("${security.jwt.token.signature:secret-key}")
 	private String signature;
